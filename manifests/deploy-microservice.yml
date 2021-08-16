@@ -2,26 +2,26 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
     labels:
-        app: clever-ariline-microservice
+        app: clever-airline-microservice
         stack: frontend
         source: demo
-    name: clever-ariline-microservice
+    name: clever-airline-microservice
     namespace: microservices
 spec:
     replicas: 3
     selector:
         matchLabels:
-            run: clever-ariline-microservice
+            run: clever-airline-microservice
     template:
         metadata:
             labels:
-                app: clever-ariline-microservice
-                run: clever-ariline-microservice
+                app: clever-airline-microservice
+                run: clever-airline-microservice
                 source: demo
         spec:
             containers:
-                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/clever-ariline-microservice
-                    name: clever-ariline-microservice
+                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/clever-airline-microservice
+                    name: clever-airline-microservice
                     ports:
                         -   name: web
                             containerPort: 8080
@@ -31,13 +31,13 @@ kind: Service
 apiVersion: v1
 metadata:
     labels:
-        app: clever-ariline-microservice-service
-    name: clever-ariline-microservice-service
+        app: clever-airline-microservice-service
+    name: clever-airline-microservice-service
     namespace: microservices
 spec:
     selector:
         source: demo
-        app: clever-ariline-microservice
+        app: clever-airline-microservice
     ports:
         -   name: web
             protocol: TCP
@@ -51,14 +51,14 @@ kind: Ingress
 metadata:
     annotations:
         nginx.ingress.kubernetes.io/rewrite-target: /$2
-    name: clever-ariline-ingress
+    name: clever-airline-ingress
     namespace: microservices
 spec:
     rules:
         -   http:
                 paths:
-                    -   path: /clever-ariline(/|$)(.*)
+                    -   path: /clever-airline(/|$)(.*)
                         backend:
-                            serviceName: clever-ariline-microservice-service
+                            serviceName: clever-airline-microservice-service
                             servicePort: 30201
 
