@@ -32,7 +32,7 @@ apiVersion: v1
 metadata:
     labels:
         app: clever-airline-microservice-service
-    name: clever-airline-microservice-service
+    name: clever-airline-microservice-service_1
     namespace: microservices
 spec:
     selector:
@@ -59,6 +59,6 @@ spec:
                 paths:
                     -   path: /clever-airline(/|$)(.*)
                         backend:
-                            serviceName: clever-airline-microservice-service
+                            serviceName: clever-airline-microservice-service_1
                             servicePort: 30201
 
