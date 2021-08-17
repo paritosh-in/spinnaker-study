@@ -2,7 +2,7 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
     labels:
-        app: clever-airline-microservice-new
+        app: clever-airline-microservice
         stack: frontend
         source: demo
     name: clever-airline-microservice
@@ -11,12 +11,12 @@ spec:
     replicas: 3
     selector:
         matchLabels:
-            run: clever-airline-microservice-new
+            run: clever-airline-microservice
     template:
         metadata:
             labels:
-                app: clever-airline-microservice-new
-                run: clever-airline-microservice-new
+                app: clever-airline-microservice
+                run: clever-airline-microservice
                 source: demo
         spec:
             containers:
@@ -31,13 +31,13 @@ kind: Service
 apiVersion: v1
 metadata:
     labels:
-        app: clever-airline-microservice-service-new
+        app: clever-airline-microservice-service
     name: clever-airline-microservice-service
     namespace: microservices
 spec:
     selector:
         source: demo
-        app: clever-airline-microservice-new
+        app: clever-airline-microservice
     ports:
         -   name: web
             protocol: TCP
