@@ -37,7 +37,7 @@ metadata:
 spec:
     selector:
         source: demo
-        app: clever-airline-microservice
+        app: clever-airline-microservice-new
     ports:
         -   name: web
             protocol: TCP
